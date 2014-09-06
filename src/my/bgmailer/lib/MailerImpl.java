@@ -8,6 +8,7 @@ public class MailerImpl implements Mailer {
 
 	private Context mContext;
 
+	
 	public MailerImpl(Context context) {
 		mContext = context;
 		mMail = new MailConfig();
