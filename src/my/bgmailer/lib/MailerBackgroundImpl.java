@@ -3,14 +3,14 @@ package my.bgmailer.lib;
 import android.content.Context;
 import android.content.Intent;
 
-public class MailForMe implements BgMailer {
+public class MailerBackgroundImpl implements Mailer {
 
 	private String mUserName, mPasswd, mSubject, mBody;
 	private String[] mRecepients;
 	private String mFilePath, mFileName;
 	private Context mContext;
 
-	public MailForMe(Context context) {
+	public MailerBackgroundImpl(Context context) {
 		mContext = context;
 	}
 
@@ -50,13 +50,13 @@ public class MailForMe implements BgMailer {
 	public boolean send() {
 		Intent intent = new Intent(mContext, MailingService.class);
 		// in.putExtra(name, value)
-		intent.putExtra(BgMailer.USERKEY, mUserName);
-		intent.putExtra(BgMailer.PASSKEY, mPasswd);
-		intent.putExtra(BgMailer.RECIEVEKEY, mRecepients);
-		intent.putExtra(BgMailer.SUBJECTKEY, mSubject);
-		intent.putExtra(BgMailer.BODYKEY, mBody);
-		intent.putExtra(BgMailer.FILEPATHKEY, mFilePath);
-		intent.putExtra(BgMailer.FILENAMEKEY, mFileName);
+		intent.putExtra(Mailer.USERKEY, mUserName);
+		intent.putExtra(Mailer.PASSKEY, mPasswd);
+		intent.putExtra(Mailer.RECIEVEKEY, mRecepients);
+		intent.putExtra(Mailer.SUBJECTKEY, mSubject);
+		intent.putExtra(Mailer.BODYKEY, mBody);
+		intent.putExtra(Mailer.FILEPATHKEY, mFilePath);
+		intent.putExtra(Mailer.FILENAMEKEY, mFileName);
 		if (null != mContext.startService(intent))
 			return true;
 		return false;

@@ -12,7 +12,7 @@ public class MailingService extends IntentService {
 	private String mUserName, mPasswd, mSubject, mBody;
 	private String[] mRecepients;
 	private String mFilePath, mFileName;
-	private BgMailer mBgMailer;
+	private Mailer mMailer;
 	private Handler mHandler;
 
 	public MailingService() {
@@ -22,26 +22,26 @@ public class MailingService extends IntentService {
 
 	@Override
 	protected void onHandleIntent(Intent intent) {
-		mUserName = intent.getStringExtra(BgMailer.USERKEY);
-		mPasswd = intent.getStringExtra(BgMailer.PASSKEY);
-		mRecepients = intent.getStringArrayExtra(BgMailer.RECIEVEKEY);
-		mSubject = intent.getStringExtra(BgMailer.SUBJECTKEY);
-		mBody = intent.getStringExtra(BgMailer.BODYKEY);
-		mFilePath = intent.getStringExtra(BgMailer.FILEPATHKEY);
-		mFileName = intent.getStringExtra(BgMailer.FILENAMEKEY);
+		mUserName = intent.getStringExtra(Mailer.USERKEY);
+		mPasswd = intent.getStringExtra(Mailer.PASSKEY);
+		mRecepients = intent.getStringArrayExtra(Mailer.RECIEVEKEY);
+		mSubject = intent.getStringExtra(Mailer.SUBJECTKEY);
+		mBody = intent.getStringExtra(Mailer.BODYKEY);
+		mFilePath = intent.getStringExtra(Mailer.FILEPATHKEY);
+		mFileName = intent.getStringExtra(Mailer.FILENAMEKEY);
 		SetandSend();
 	}
 
 	private void SetandSend() {
-		mBgMailer = new BgMailerImpl(this);
-		mBgMailer.setUserName(mUserName);
-		mBgMailer.setPassword(mPasswd);
-		mBgMailer.addRecepients(mRecepients);
-		mBgMailer.setSubject(mSubject);
-		mBgMailer.setBody(mBody);
-		mBgMailer.addAttachment(mFilePath, mFileName);
+		mMailer = new MailerImpl(this);
+		mMailer.setUserName(mUserName);
+		mMailer.setPassword(mPasswd);
+		mMailer.addRecepients(mRecepients);
+		mMailer.setSubject(mSubject);
+		mMailer.setBody(mBody);
+		mMailer.addAttachment(mFilePath, mFileName);
 
-		if (mBgMailer.send()) {
+		if (mMailer.send()) {
 			Log.d("Dmailer", "success");
 			mHandler.post(new Toaster(getApplicationContext(), "Success"));
 		} else {

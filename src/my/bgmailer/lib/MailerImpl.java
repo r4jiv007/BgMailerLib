@@ -2,15 +2,15 @@ package my.bgmailer.lib;
 
 import android.content.Context;
 
-public class BgMailerImpl implements BgMailer {
+public class MailerImpl implements Mailer {
 
-	private Mail mMail;
+	private MailConfig mMail;
 
 	private Context mContext;
 
-	public BgMailerImpl(Context context) {
+	public MailerImpl(Context context) {
 		mContext = context;
-		mMail = new Mail();
+		mMail = new MailConfig();
 	}
 
 	@Override

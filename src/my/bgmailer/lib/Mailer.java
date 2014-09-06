@@ -2,7 +2,7 @@ package my.bgmailer.lib;
 
 import android.net.Uri;
 
-public interface BgMailer {
+public interface Mailer {
 
 	public static final String USERKEY = "user", PASSKEY = "pass",
 			FILENAMEKEY = "filename", FILEPATHKEY = "filepath",

@@ -18,7 +18,7 @@ import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
-public class Mail extends javax.mail.Authenticator {
+public class MailConfig extends javax.mail.Authenticator {
 	private String _user;
 	private String _pass;
 
@@ -39,7 +39,7 @@ public class Mail extends javax.mail.Authenticator {
 
 	private Multipart _multipart;
 
-	public Mail() {
+	public MailConfig() {
 		_host = "smtp.gmail.com"; // default smtp server
 		_port = "465"; // default smtp port
 		_sport = "465"; // default socketfactory port
@@ -67,7 +67,7 @@ public class Mail extends javax.mail.Authenticator {
 		CommandMap.setDefaultCommandMap(mc);
 	}
 
-	public Mail(String user, String pass) {
+	public MailConfig(String user, String pass) {
 		this();
 
 		_user = user;
