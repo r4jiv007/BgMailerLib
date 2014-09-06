@@ -1,6 +1,5 @@
 package my.bgmailer.lib;
 
-import android.net.Uri;
 
 public interface Mailer {
 
