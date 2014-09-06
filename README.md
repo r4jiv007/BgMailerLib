@@ -1,8 +1,8 @@
 BgMailerLib 1.0
 =====================
 
-Android Library to send Email without user-intervention , can be used to send via background service or thread
-
+Android Library to send Email , can be used to send via background service or thread
+It also supports Attachments.
 **How to use it**
 
 	There are two ways to use this library ,
