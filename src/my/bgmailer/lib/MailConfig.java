@@ -1,3 +1,9 @@
+/*
+ *  following source is taken from this link :-
+ *  http://www.jondev.net/articles/Sending_Emails_without_User_Intervention_%28no_Intents%29_in_Android
+ * 
+ */
+
 package my.bgmailer.lib;
 
 import java.util.Date;
